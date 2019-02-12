@@ -42,21 +42,6 @@ task tzdb(type: JavaExec) {
     println "--- END TZDB BUILD ---"
 }
 
-task dump(type: JavaExec) {
-
-    if (!project.hasProperty('tzdb')) {
-        println "引数`tzdb <TZDB.datパス>`が必要です"
-    }
-
-    main = 'org.threeten.bp.zone.TzdbZoneRulesDecompiler'
-    classpath = sourceSets.main.runtimeClasspath
-
-    println "--- START TZDB DECOMPILE ---"
-    // arguments to pass to the application
-    args '-tzdb', "${project.tzdb}"
-    println "--- END TZDB DECOMPILE ---"
-}
-
 test {
     useTestNG()
 }
